@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @OpenAPIDefinition(
-        info = @Info(title = "Weather Service", description = ""),
+        info = @Info(title = "Weather Service"),
         servers = @Server(url = "http://localhost:8080")
 )
 public class OpenApiConfig {

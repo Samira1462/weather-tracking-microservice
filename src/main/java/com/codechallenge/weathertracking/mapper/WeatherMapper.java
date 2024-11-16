@@ -14,7 +14,10 @@ import java.time.ZoneOffset;
 
 import static com.codechallenge.weathertracking.utils.TemperatureConverterUtil.convertToCelsius;
 
-public class WeatherMapper {
+public final class WeatherMapper {
+
+    private WeatherMapper() {
+    }
 
     public static WeatherConditionDto toWeatherConditionDto(WeatherConditionEntity entity) {
         return new WeatherConditionDto(
