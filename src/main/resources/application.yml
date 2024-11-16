@@ -1,1 +1,68 @@
+server:
+  address: ${APP_HOST:0.0.0.0}
+  port: ${APP_PORT:8080}
+spring:
+  main:
+    banner-mode: OFF
+  datasource:
+    username: ${DATABASE_USERNAME:weather_user}
+    password: ${DATABASE_PASSWORD:weather_password}
+    url: jdbc:postgresql://${POSTGRESQL_HOST:localhost}:${POSTGRESQL_PORT:5432}/${DATABASE_NAME:weather_db}
+    driver-class-name: org.postgresql.Driver
+  data:
+    jpa:
+      repositories:
+        enabled: true
+  jpa:
+    database: POSTGRESQL
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    defer-datasource-initialization: true
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      javax:
+        persistence:
+          create-database-schemas: true
+      hibernate:
+        generate_statistics: true
+        format_sql: true
+        naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+        default_schema: ${DATABASE_SCHEMA:tracking}
 
+openweather:
+  api:
+    key: 5bd6eb2323c2f8b917a4d520222505a0
+    url: https://api.openweathermap.org/data/2.5/weather
+    retryDelay: 2
+    maxAttempts: 3
+
+---
+spring:
+  config:
+    activate:
+      on-profile: test
+  datasource:
+    username: sa
+    password: ''
+    url: jdbc:h2:mem:test_db
+    driver-class-name: org.h2.Driver
+  data:
+    jdbc:
+      repositories:
+        enabled: true
+  jpa:
+    database: H2
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      javax:
+        persistence:
+          create-database-schemas: false
+      hibernate:
+        generate_statistics: true
+        format_sql: true
+        naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+        default_schema: ""

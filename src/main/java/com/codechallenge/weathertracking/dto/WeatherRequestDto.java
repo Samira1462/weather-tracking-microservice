@@ -7,16 +7,16 @@ import jakarta.validation.constraints.Pattern;
 
 public record WeatherRequestDto(
         @NotEmpty(message = "{weatherRequestDto.user.notEmpty}")
-        String username,
+        String user,
         @NotEmpty(message = "{weatherRequestDto.postalCode.notEmpty}")
         @Pattern(regexp = "^\\d{5}(-\\d{4})?$", message = "{weatherRequestDto.postalCode.invalid}")
         String postalCode
 ) {
         @JsonCreator
         public WeatherRequestDto(
-                @JsonProperty("username") String username,
+                @JsonProperty("user") String user,
                 @JsonProperty("postalCode") String postalCode) {
-                this.username = username;
+                this.user = user;
                 this.postalCode = postalCode;
         }
 }

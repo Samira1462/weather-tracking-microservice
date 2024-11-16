@@ -1,0 +1,44 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:13.9-alpine
+    container_name: postgres
+    hostname: postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: weather_user
+      POSTGRES_PASSWORD: weather_password
+      POSTGRES_DB: weather_db
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    hostname: pgadmin
+    restart: always
+    ports:
+      - "8081:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin.org
+      PGADMIN_DEFAULT_PASSWORD: "password"
+      PGADMIN_CONFIG_SERVER_MODE: "False"
+  weathertrackingservice:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: weathertrackingservice
+    hostname: weathertrackingservice
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      APP_HOST: "0.0.0.0"
+      APP_PORT: "8080"
+      APP_PROFILES: postgres
+      DATABASE_USERNAME: weather_user
+      DATABASE_PASSWORD: weather_password
+      POSTGRESQL_HOST: postgres
+      POSTGRESQL_PORT: 5432
+      DATABASE_NAME: weather_db
+      DATABASE_SCHEMA: tracking
