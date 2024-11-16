@@ -49,8 +49,8 @@ public class WeatherServiceImpl implements WeatherService {
                 .bodyToMono(WeatherResponse.class)
                 .onErrorResume(WebClientResponseException.class, ex -> {
                     logger.error("WebClientResponseException occurred: {}", ex.getMessage(), ex);
-                    return Mono.error(new WebClientResponseException("Failed to fetch weather data", ex.getRawStatusCode(),
-                            ex.getStatusText(), ex.getHeaders(), null, null));
+                    return Mono.error(new WebClientResponseException("Failed to fetch weather data",
+                            ex.getStatusCode().value(), ex.getStatusText(), ex.getHeaders(), null, null));
                 })
                 .block();
 
@@ -73,11 +73,15 @@ public class WeatherServiceImpl implements WeatherService {
     }
 
     @Override
-    public Optional<List<WeatherConditionDto>> getByPostalCodeOrUser(String postalCode, String username) {
-        return weatherConditionRepository.findByPostalCodeOrUsername(postalCode, username)
-                .map(entityList -> entityList.stream()
-                .map(WeatherMapper::toWeatherConditionDto)
-                        .toList());
+    public Optional<List<WeatherConditionDto>> getByPostalCode(String postalCode) {
+        return userRepository.findByPostalCode(postalCode)
+                .map(entity -> entity.getWeathers().stream().map(WeatherMapper::toWeatherConditionDto).toList());
+    }
+
+    @Override
+    public Optional<List<WeatherConditionDto>> getByUser(String user) {
+        return userRepository.findByUsername(user)
+                .map(entity -> entity.getWeathers().stream().map(WeatherMapper::toWeatherConditionDto).toList());
     }
 
 }

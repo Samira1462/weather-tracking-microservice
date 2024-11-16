@@ -42,22 +42,28 @@ public class WeatherApi {
     }
 
     @GetMapping("/history")
-    public ResponseEntity<List<WeatherConditionDto>> findPostalcode(@Valid @Pattern(regexp = "^\\d{5}(-\\d{4})?$", message = "{weatherDto.postalCode.invalid}")
-                                                                        @RequestParam(required = false) String postalcode,
-                                                                    @RequestParam(required = false) String user) {
+    public ResponseEntity<List<WeatherConditionDto>> getPostalCode(@Valid @Pattern(regexp = "^\\d{5}(-\\d{4})?$", message = "{weatherDto.postalCode.invalid}")
+                                                                   @RequestParam(required = false) String postalCode,
+                                                                   @RequestParam(required = false) String user) {
+        logger.info("Received an inbound request to get weather history");
 
-        if ((user == null && postalcode == null) || (user != null && postalcode != null)) {
-            throw new IllegalArgumentException("You must provide either 'user' or 'postalcode', but not both or neither.");
+        if ((user == null && postalCode == null) || (user != null && postalCode != null)) {
+            throw new IllegalArgumentException("You must provide either 'user' or 'postal code', but not both or neither.");
         }
 
-        String logMessage = Optional.ofNullable(user)
-                .map(u -> "Retrieving weather conditions for user: [" + user + "]")
-                .orElse("Retrieving weather conditions for postal code: [" + postalcode + "]");
-        logger.info(logMessage);
+        Optional<List<WeatherConditionDto>> history = Optional.empty();
 
-        return weatherService.getByPostalCodeOrUser(postalcode, user)
-                .map(ResponseEntity::ok)
-                .orElseGet(() -> notFound().build());
+        if (user != null) {
+            logger.info("Retrieving weather conditions for user: [{}]", user);
+            history = weatherService.getByUser(user);
+        }
+
+        if (postalCode != null) {
+            logger.info("Retrieving weather conditions for postal code: [{}]", postalCode);
+            history = weatherService.getByPostalCode(postalCode);
+        }
+
+        return history.map(ResponseEntity::ok).orElseGet(() -> notFound().build());
     }
 
 }

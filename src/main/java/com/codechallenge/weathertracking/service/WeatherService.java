@@ -10,5 +10,7 @@ public interface WeatherService {
 
     Optional<WeatherConditionDto> save(WeatherRequestDto dto);
 
-    Optional<List<WeatherConditionDto>> getByPostalCodeOrUser(String postalcode , String username);
+    Optional<List<WeatherConditionDto>> getByUser(String user);
+
+    Optional<List<WeatherConditionDto>> getByPostalCode(String postalCode);
 }
