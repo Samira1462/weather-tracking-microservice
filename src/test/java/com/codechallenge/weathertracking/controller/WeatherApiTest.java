@@ -55,6 +55,22 @@ class WeatherApiTest {
                     .body("errors", hasItem("Invalid US postal code"))
                     .log().all(true);
         }
+
+        @Test
+        void givenInvalidDtoWithEmptyValue_whenSaveOne_thenReturnErrorWithBadRequestStatus() {
+            var givenBody = new WeatherRequestDto(" ", "10001");
+
+            RestAssured.given()
+                    .contentType(ContentType.JSON)
+                    .baseUri("http://localhost").port(port).basePath("/app/weather")
+                    .body(givenBody)
+                    .when().post()
+                    .then()
+                    .statusCode(HttpStatus.BAD_REQUEST.value())
+                    .body("errors.size()", is(1))
+                    .body("errors", hasItem("User cannot be null or empty string or whitespace-only"))
+                    .log().all(true);
+        }
 //
         @Test
         void givenValidDto_whenSaveOne_thenReturnDtoAndOKRequestStatus() {
