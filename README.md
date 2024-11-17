@@ -60,7 +60,9 @@ The **Weather Tracking Service** is a Spring Boot application designed to fetch 
     docker compose --file docker-compose.yml --project-name weather-service up --build -d
 ```
 5. **API Documentation**
-   The API endpoints are documented using Swagger, accessible at `http://localhost:8080/swagger-ui/` when the application is running.
+   
+   The API endpoints are documented using Swagger and are accessible when the application is running.
+
 ```text
    http://localhost:8080/swagger-ui/index.html
 ```
