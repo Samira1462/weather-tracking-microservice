@@ -13,14 +13,14 @@ The **Weather Tracking Service** is a Spring Boot application designed to fetch 
 
 2. **User Input**
     - Accepts user-provided postal codes and usernames.
-    - Validates input to ensure correctness (US postal code format).
+    - Validate input to ensure correctness (US postal code format).
 
 3. **Data Retrieval**
     - Fetches weather details like temperature, humidity, and conditions for the given postal code or username.
     - Handles errors gracefully with user-friendly error messages.
 
 4. **Data Storage**
-    - Saves Data in a postgres database.
+    - Saves Data in a Postgres database.
     - Maintains history for each postal code and user.
 
 5. **Data Presentation**
