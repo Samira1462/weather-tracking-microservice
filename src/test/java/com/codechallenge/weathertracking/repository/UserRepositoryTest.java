@@ -30,7 +30,7 @@ class UserRepositoryTest {
 
     @Test
     void findByUsername_whenUsernameExists_thenReturnUser() {
-        Optional<UserEntity> result = systemUnderTest.findByUsername("user1");
+        Optional<UserEntity> result = systemUnderTest.findByUsername("john_doe");
 
         assertTrue(result.isPresent());
         assertEquals("john_doe", result.get().getUsername());
