@@ -3,6 +3,7 @@ package com.codechallenge.weathertracking.utils;
 import com.codechallenge.weathertracking.exception.ValidationException;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 
@@ -10,6 +11,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@ActiveProfiles("test")
 class ApiErrorUtilsTest {
     @Test
     void givenNoErrors_thenValidationPasses() {

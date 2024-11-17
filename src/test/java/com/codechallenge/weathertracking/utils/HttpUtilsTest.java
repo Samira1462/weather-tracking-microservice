@@ -3,12 +3,14 @@ package com.codechallenge.weathertracking.utils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import static com.codechallenge.weathertracking.utils.HttpUtils.uriOf;
 import static org.junit.jupiter.api.Assertions.*;
 
+@ActiveProfiles("test")
 class HttpUtilsTest {
     @BeforeEach
     public void setUp() {

@@ -106,7 +106,7 @@ class WeatherServiceImplTest {
             assertEquals(1, result.get().size());
         }
 
-     public static UserEntity createTestUserEntity() {
+     private static UserEntity createTestUserEntity() {
          DescriptionEntity description = new DescriptionEntity();
          description.setId(1L);
          description.setWeatherId(101);
