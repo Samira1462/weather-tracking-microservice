@@ -54,12 +54,12 @@ class WeatherAdapterTest {
 
     private static WeatherResponse createWeatherResponse() {
 
-        Coord coord = new Coord(40.7128, -74.0060);
-        Weather weather = new Weather(800, "Clear", "clear sky", "01d");
-        Main main = new Main(15.5, 1013, 53, 15.0,15 ,17);
-        Wind wind = new Wind(5.1, 200);
-        Clouds clouds = new Clouds(0);
-        Sys sys = new Sys(1, 1, 2d,"US", 1637109200, 1637152400);
+        var coord = new Coord(40.7128, -74.0060);
+        var weather = new Weather(800, "Clear", "clear sky", "01d");
+        var main = new Main(15.5, 1013, 53, 15.0, 15, 17);
+        var wind = new Wind(5.1, 200);
+        var clouds = new Clouds(0);
+        var sys = new Sys(1, 1, 2d, "US", 1637109200, 1637152400);
 
         return new WeatherResponse(
                 coord,

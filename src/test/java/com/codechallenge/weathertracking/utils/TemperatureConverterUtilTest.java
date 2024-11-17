@@ -9,20 +9,20 @@ import static org.junit.jupiter.api.Assertions.*;
 class TemperatureConverterUtilTest {
     @Test
     void testConvertToCelsius() {
-        double kelvin = 300.0;
-        double expectedCelsius = 26.85;
+        var kelvin = 300.0;
+        var expectedCelsius = 26.85;
 
-        double actual = TemperatureConverterUtil.convertToCelsius(kelvin);
+        var actual = TemperatureConverterUtil.convertToCelsius(kelvin);
 
         assertEquals(expectedCelsius, actual, 0.001, "Conversion from Kelvin to Celsius is incorrect");
     }
 
     @Test
     void testConvertToFahrenheit() {
-        double kelvin = 300.0;
-        double expectedFahrenheit = 80.33;
+        var kelvin = 300.0;
+        var expectedFahrenheit = 80.33;
 
-        double actual = TemperatureConverterUtil.convertToFahrenheit(kelvin);
+        var actual = TemperatureConverterUtil.convertToFahrenheit(kelvin);
 
         assertEquals(expectedFahrenheit, actual, 0.001, "Conversion from Kelvin to Fahrenheit is incorrect");
     }

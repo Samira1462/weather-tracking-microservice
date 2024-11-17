@@ -23,7 +23,6 @@ class WeatherApiTest {
     @Inject
     WeatherService testAssistant;
 
-
     @LocalServerPort
     int port;
 
@@ -58,7 +57,7 @@ class WeatherApiTest {
                     .then()
                     .statusCode(HttpStatus.BAD_REQUEST.value())
                     .body("errors.size()", is(1))
-                    .body("errors", hasItem("Invalid US postal code"))
+                    .body("errors", hasItem("The provided US postal code is invalid."))
                     .log().all(true);
         }
 
@@ -78,7 +77,6 @@ class WeatherApiTest {
                     .log().all(true);
         }
     }
-
 
     @Nested
     class FindTests {

@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class HttpUtilsTest {
     @BeforeEach
     public void setUp() {
-        MockHttpServletRequest request = new MockHttpServletRequest();
+        var request = new MockHttpServletRequest();
         RequestContextHolder.setRequestAttributes(new ServletRequestAttributes(request));
     }
 

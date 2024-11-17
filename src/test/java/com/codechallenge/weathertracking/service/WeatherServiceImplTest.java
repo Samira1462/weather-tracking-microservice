@@ -68,7 +68,7 @@ class WeatherServiceImplTest {
         @Test
         void getByPostalCode_whenNoUserFound_thenReturnEmptyOptional() {
 
-            String postalCode = "94042";
+            var postalCode = "94042";
 
             Optional<List<WeatherConditionDto>> actual = systemUnderTest.getByPostalCode(postalCode);
 
@@ -78,7 +78,7 @@ class WeatherServiceImplTest {
 
         @Test
         void getByPostalCode_whenUserHasWeathers_thenReturnWeatherConditionList() {
-            String postalCode = "94041";
+            var postalCode = "94041";
 
             Optional<List<WeatherConditionDto>> actual = systemUnderTest.getByPostalCode(postalCode);
 
@@ -89,7 +89,7 @@ class WeatherServiceImplTest {
 
         @Test
         void getByUser_whenNoUserFound_thenReturnEmptyOptional() {
-            String username = "Joe";
+            var username = "Joe";
 
             Optional<List<WeatherConditionDto>> actual = systemUnderTest.getByUser(username);
 
@@ -98,7 +98,7 @@ class WeatherServiceImplTest {
 
        @Test
         void getByUser_whenUserHasWeathers_thenReturnWeatherConditionList() {
-            String username = "Samira";
+            var username = "Samira";
 
             Optional<List<WeatherConditionDto>> result = systemUnderTest.getByUser(username);
 
