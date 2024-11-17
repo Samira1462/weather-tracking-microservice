@@ -9,7 +9,7 @@
 		<relativePath/>
 	</parent>
 	<groupId>com.codechallenge.weather-tracking</groupId>
-	<artifactId>weather-tracking-microservice</artifactId>
+	<artifactId>weather-tracking-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Weather Tracking</name>
 	<description>A Java application to fetch, display, and store current weather data based on US postal codes.
