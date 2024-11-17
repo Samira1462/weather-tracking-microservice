@@ -32,17 +32,12 @@ The **Weather Tracking Service** is a Spring Boot application designed to fetch 
 
 ---
 ## Getting Started
-- **Spring Boot**: A production-ready, opinionated framework for developing Java-based applications.
-- **Java 21**: Uses the latest stable version of Java for improved performance and long-term support.
-- **RESTful API**: Provides a starting REST API structure.
-- **Containerization**: Docker support for easy containerization and deployment.
-- **Swagger Integration**: API documentation with Swagger UI.
 
 ### Prerequisites
 - **Java 21** or later
 - **Maven 3** or later
-- **Postgres** Main DataBase
-- **H2** Test DataBase
+- **Postgres** (for Main DataBase)
+- **H2** (for Test DataBase)
 - **Docker** (for containerization)
 ---
 
