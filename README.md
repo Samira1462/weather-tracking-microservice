@@ -45,7 +45,7 @@ The **Weather Tracking Service** is a Spring Boot application designed to fetch 
 
 1. **Clone the Repository**
 ```shell
-    git clone https://github.com/Samira1462/weather-tracking-microservice.git
+    git clone https://github.com/Samira1462/weather-tracking-service.git
 ```
 2. **clean package**
 ```shell
