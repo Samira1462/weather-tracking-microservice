@@ -2,7 +2,7 @@
 
 ### Overview
 
-The **Weather Tracking Service** is a Spring Boot application designed to fetch and display current weather data for US postal codes using a [weather API](https://openweathermap.org/). It supports user-specific request history and stores query details in a database for future reference.
+The **Weather Tracking Service** is a Spring Boot application that gets the current weather for a given U.S. by postal code from a [third API](https://openweathermap.org/) and then saves the weather history in a database. The client of this system can achieve the weather history with "user" or  "postalcode"
 
 ---
 ### Features
