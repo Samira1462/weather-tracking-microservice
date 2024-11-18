@@ -1,4 +1,4 @@
-package com.codechallenge.weathertracking.controller;
+package com.codechallenge.weathertracking.api;
 
 import com.codechallenge.weathertracking.dto.WeatherConditionDto;
 import com.codechallenge.weathertracking.dto.WeatherRequestDto;
